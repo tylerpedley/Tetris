@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tetris", "Tetris.vcxproj", "{D52A6475-AB72-4E83-8B9A-5FB1D6DEA9CD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{68A26DA8-A9DC-4352-B7AF-6ED2A663B616} = {68A26DA8-A9DC-4352-B7AF-6ED2A663B616}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TetrisLibrary", "TetrisLibrary.vcxproj", "{68A26DA8-A9DC-4352-B7AF-6ED2A663B616}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TetrisTests", "TetrisTests.vcxproj", "{EA70BF9F-F37C-4DC9-A190-6E51088DF597}"
+	ProjectSection(ProjectDependencies) = postProject
+		{68A26DA8-A9DC-4352-B7AF-6ED2A663B616} = {68A26DA8-A9DC-4352-B7AF-6ED2A663B616}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gtest", "..\gtest\msvc\gtest.vcxproj", "{E2571DDD-0519-4BAA-8654-3D53392AB134}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gtest_main", "..\gtest\msvc\gtest_main.vcxproj", "{D05DB1B0-11D2-4826-8F0C-123FFAAA27E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D52A6475-AB72-4E83-8B9A-5FB1D6DEA9CD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D52A6475-AB72-4E83-8B9A-5FB1D6DEA9CD}.Debug|Win32.Build.0 = Debug|Win32
+		{D52A6475-AB72-4E83-8B9A-5FB1D6DEA9CD}.Release|Win32.ActiveCfg = Release|Win32
+		{D52A6475-AB72-4E83-8B9A-5FB1D6DEA9CD}.Release|Win32.Build.0 = Release|Win32
+		{68A26DA8-A9DC-4352-B7AF-6ED2A663B616}.Debug|Win32.ActiveCfg = Debug|Win32
+		{68A26DA8-A9DC-4352-B7AF-6ED2A663B616}.Debug|Win32.Build.0 = Debug|Win32
+		{68A26DA8-A9DC-4352-B7AF-6ED2A663B616}.Release|Win32.ActiveCfg = Release|Win32
+		{68A26DA8-A9DC-4352-B7AF-6ED2A663B616}.Release|Win32.Build.0 = Release|Win32
+		{EA70BF9F-F37C-4DC9-A190-6E51088DF597}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EA70BF9F-F37C-4DC9-A190-6E51088DF597}.Debug|Win32.Build.0 = Debug|Win32
+		{EA70BF9F-F37C-4DC9-A190-6E51088DF597}.Release|Win32.ActiveCfg = Release|Win32
+		{EA70BF9F-F37C-4DC9-A190-6E51088DF597}.Release|Win32.Build.0 = Release|Win32
+		{E2571DDD-0519-4BAA-8654-3D53392AB134}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E2571DDD-0519-4BAA-8654-3D53392AB134}.Debug|Win32.Build.0 = Debug|Win32
+		{E2571DDD-0519-4BAA-8654-3D53392AB134}.Release|Win32.ActiveCfg = Release|Win32
+		{E2571DDD-0519-4BAA-8654-3D53392AB134}.Release|Win32.Build.0 = Release|Win32
+		{D05DB1B0-11D2-4826-8F0C-123FFAAA27E3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D05DB1B0-11D2-4826-8F0C-123FFAAA27E3}.Debug|Win32.Build.0 = Debug|Win32
+		{D05DB1B0-11D2-4826-8F0C-123FFAAA27E3}.Release|Win32.ActiveCfg = Release|Win32
+		{D05DB1B0-11D2-4826-8F0C-123FFAAA27E3}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
