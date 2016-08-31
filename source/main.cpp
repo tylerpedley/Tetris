@@ -1,52 +1,70 @@
 #include <SDL.h>
 #include <stdio.h>
+#include <string>
+#include <iostream>
+#include <stdint.h>
+#include "Game.h"
+#include "SDLDriver.h"
+#include "Timer.h"
 
-//Screen dimension constants
-const int SCREEN_WIDTH = 800;
-const int SCREEN_HEIGHT = 800;
+// Class Objects
+SDLDriver MainSDLDriver;
+Game Tetris(&MainSDLDriver);
 
-int main(int argc, char* args[])
+int main(int argc, char* argv[])
 {
-	//The window we'll be rendering to
-	SDL_Window* window = NULL;
+	MainSDLDriver.init();
+	Tetris.init();
 
-	//The surface contained by the window
-	SDL_Surface* screenSurface = NULL;
+	SDL_SetRenderDrawColor(MainSDLDriver.Renderer, 0x00, 0x00, 0x00, 0x00);
+	SDL_RenderClear(MainSDLDriver.Renderer);
 
-	//Initialize SDL
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
+	bool isRunning = true;
+
+	Tetris.Grid.spawnShape();
+
+	static int frameCounter = 0;
+
+	while (isRunning)
 	{
-		printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
-	}
-	else
-	{
-		//Create window
-		window = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-		if (window == NULL)
+		SDL_Event E;
+		while (SDL_PollEvent(&E) != 0 && isRunning == true)
 		{
-			printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
+			if (E.type == SDL_QUIT)
+			{
+				isRunning = false;
+			}
+			else if (E.type == SDL_KEYDOWN)
+			{
+				if (E.key.keysym.sym == SDLK_DOWN)
+				{
+					Tetris.Grid.moveShape(Tetris.Grid.DOWN);
+				}
+				else if (E.key.keysym.sym == SDLK_LEFT)
+				{
+					Tetris.Grid.moveShape(Tetris.Grid.LEFT);
+				}
+				else if (E.key.keysym.sym == SDLK_RIGHT)
+				{
+					Tetris.Grid.moveShape(Tetris.Grid.RIGHT);
+				}
+				else if (E.key.keysym.sym == SDLK_r)
+				{
+					Tetris.Grid.RotateShape();
+				}
+			}
 		}
-		else
+
+		if (frameCounter == 4000000)
 		{
-			//Get window surface
-			screenSurface = SDL_GetWindowSurface(window);
-
-			//Fill the surface white
-			SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xFF, 0xFF, 0xFF));
-
-			//Update the surface
-			SDL_UpdateWindowSurface(window);
-
-			//Wait two seconds
-			SDL_Delay(2000);
+			Tetris.Grid.moveShape(Tetris.Grid.DOWN);
+			frameCounter = 0;
 		}
+
+		frameCounter++;
 	}
 
-	//Destroy window
-	SDL_DestroyWindow(window);
-
-	//Quit SDL subsystems
-	SDL_Quit();
+	MainSDLDriver.close();
 
 	return 0;
 }
