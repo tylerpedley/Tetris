@@ -41,6 +41,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetExt>.lib</TargetExt>
     <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
+    <IncludePath>dev_libs\SDL2_image-2.0.1\include;dev_libs\SDL\include;$(IncludePath)</IncludePath>
+    <LibraryPath>dev_libs\SDL\lib\x86;dev_libs\SDL2_image-2.0.1\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <TargetExt>.lib</TargetExt>
@@ -51,6 +53,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalIncludeDirectories>dev_libs\SDL2_image-2.0.1\include;dev_libs\SDL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -72,10 +75,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\source\Game.cpp" />
+    <ClCompile Include="..\source\GameGrid.cpp" />
+    <ClCompile Include="..\source\SDLDriver.cpp" />
     <ClCompile Include="..\source\Tetris.cpp" />
+    <ClCompile Include="..\source\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\source\Game.h" />
+    <ClInclude Include="..\source\GameGrid.h" />
+    <ClInclude Include="..\source\SDLDriver.h" />
     <ClInclude Include="..\source\Tetris.h" />
+    <ClInclude Include="..\source\Timer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
